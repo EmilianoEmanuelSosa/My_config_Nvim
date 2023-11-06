@@ -1,37 +1,74 @@
 return {
-  "nvim-telescope/telescope.nvim",
+    "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    { "kyazdani42/nvim-web-devicons" },
-    { "nvim-telescope/telescope-file-browser.nvim" },
+    "nvim-lua/plenary.nvim",
+    "kyazdani42/nvim-web-devicons",
+    "nvim-telescope/telescope-file-browser.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      dependencies = {
-        "junegunn/fzf.vim",
-        dependencies = {
-          {
-            "tpope/vim-dispatch",
-            cmd = { "Make", "Dispatch" },
-          },
-          {
-            "junegunn/fzf",
-            build = ":call fzf#install()",
-          }
-        },
-      },
+      build = "make"
     },
   },
   event = "VeryLazy",
-  config = function()
-    require "alpha.telescope.setup"
-    require "alpha.telescope.mappings"
-  end,
-keys={
-    "<leader>pp",
-    function()
-    require('telescope.builtin').git_files({show_untracked=true})
-    end,
-    desc="Telescope Git Files",
+  keys = {
+    {
+      "<leader>pp",
+      function()
+        require('telescope.builtin').git_files({ show_untracked = true })
+      end,
+      desc = "Telescope Git Files"
+    },
+    {
+      "<leader>pe",
+      function()
+        require('telescope.builtin').buffers()
+      end,
+      desc = "Telescope Buffers"
+    },
+    {
+      "<leader>gs",
+      function()
+        require('telescope.builtin').git_status()
+      end,
+      desc = "Telescope Git Status"
+    },
+    {
+      "<leader>gc",
+      function()
+        require('telescope.builtin').git_commits()
+      end,
+      desc = "Telescope Git Commits"
+    },
+    {
+      "<leader>gb",
+      function()
+        require('telescope.builtin').git_branches()
+      end,
+      desc = "Telescope Git Branches"
+    },
+    {
+      "<leader>pf",
+      function()
+        require('telescope.builtin').find_files()
+      end,
+      desc = "Telescope Find Files"
+    },
+    {
+      "<leader>hh",
+      function()
+        require('telescope.builtin').help_tags()
+      end,
+      desc = "Telescope Help"
+    }
+    --{
+       -- "<leader>ff",
+       -- function()
+     --       require('telescope').extensions.file_browser({ hidden = true })
+   --     end,
+ --       desc = "Telescope File Browser"
+--    },
+
+
   },
 }
+

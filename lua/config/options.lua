@@ -1,7 +1,11 @@
-vim.g.mapleader = " "
 vim.g.snippets = "luasnip"
 
 local opt = vim.o
+
+vim.o.number = true
+vim.o.relativenumber= true
+vim.cmd.colorscheme("slate")
+vim.g.mapleader=" "
 
 opt.mouse = ""
 opt.number = true
