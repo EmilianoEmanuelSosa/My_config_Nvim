@@ -68,14 +68,6 @@ options = {
 
 
 
-
-
-
-
-
-
-
-
 local ok, lualine = pcall(require, "lualine")
 local theme = require("plugins.config.theme")
 
