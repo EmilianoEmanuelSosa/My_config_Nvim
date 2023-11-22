@@ -27,9 +27,9 @@ return {
       vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
       vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-      vim.keymap.set('n', '<space>f', function()
-        vim.lsp.buf.format { async = true }
-      end, opts)
+--      vim.keymap.set('n', '<space>f', function()
+ --       vim.lsp.buf.format { async = true }
+  --    end, opts)
     end
 
     require("neodev").setup()
@@ -47,14 +47,32 @@ return {
     require('lspconfig').pylsp.setup({
       on_attach = on_attach,
       settings = {
-        Lua = {
+        Python = {
           telemetry = { enable = false },
           workspace = { checkThirdParty = false },
         }
       }
     })
+    require("lspconfig").bashls.setup({
+      on_attach = on_attach,
+      filetypes = { "bash", "sh", "zsh" },
+    })
 
+
+    require('lspconfig').yamlls.setup({
+      on_attach = on_attach,
+      filetypes = { "yaml", "yaml.docker-compose" },
+      single_file_support = true,
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] =
+            "/*.k8s.yaml",
+          },
+        },
+      }
+    })
     require('lspconfig').sqlls.setup {}
+    require 'lspconfig'.docker_compose_language_service.setup ({ on_attach = on_attach })
   end
 }
-

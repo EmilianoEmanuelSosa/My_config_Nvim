@@ -7,6 +7,7 @@ require("keymaps.config.telescope")
 require("keymaps.config.bufferline")
 require("keymaps.config.neotree")
 require("keymaps.config.toggleterm")
+require("keymaps.lsp.lps-mason")
 local startWidth = require("keymaps.function.resizeWindows")
 
 --NAVEGATION

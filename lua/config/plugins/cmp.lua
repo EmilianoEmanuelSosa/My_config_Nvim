@@ -5,6 +5,8 @@ local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
 local M = {}
 
+
+
 function M.setup()
   cmp.setup({
     snippet = {

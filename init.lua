@@ -7,6 +7,8 @@ vim.cmd('colorscheme tokyonight-night')
 -- Establecer la opacidad de toda la ventana en Neovim
 vim.cmd('highlight Normal guibg=#00000070') -- Cambia el color de fondo para ajustar la opacidad al 50%
 
+require 'lspconfig'.docker_compose_language_service.setup {}
+
 vim.o.showtabline = 0
 vim.o.laststatus = 2
 vim.o.cmdheight = 1
@@ -140,7 +142,12 @@ lualine.setup({
 
 
 
-
+require'lspconfig'.docker_compose_language_service.setup{
+    cmd = { "docker-compose-langserver", "--stdio" },
+    filetypes = { "yaml.docker-compose" },
+    root_dir = vim.loop.cwd,
+    single_file_support = true,
+}
 
 
 
