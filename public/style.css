@@ -1,0 +1,164 @@
+html {
+  background: #333;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+body::-webkit-scrollbar {
+  width: 4px;
+}
+body::-webkit-scrollbar-track {
+  background: #333;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  min-height: 100vh;
+}
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px 15px 30px 15px;
+  }
+}
+@keyframes pulse {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+.loader {
+  position: absolute;
+  display: flex;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  justify-content: space-between;
+  translate: -50% -50%;
+}
+.loader::before,
+.loader::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: blue;
+  animation: 0.5s linear infinite alternate pulse;
+}
+.loader::after {
+  animation-direction: alternate-reverse;
+}
+.marker {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  top: 50%;
+  left: 5px;
+  border-radius: 50%;
+  background-color: blue;
+}
+div.mermaid {
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 6px;
+  overflow: auto;
+  line-height: 1.45;
+  font-size: 85%;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  word-wrap: normal;
+  background-color: var(--color-canvas-subtle);
+}
+div.mermaid:has(svg) {
+  height: auto !important;
+}
+div[data-graph='mermaid']:has(> .loader) {
+  position: relative;
+  height: 100%;
+  min-height: 50px;
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: var(--color-prettylights-syntax-keyword);
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: var(--color-prettylights-syntax-constant);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: var(--color-prettylights-syntax-constant);
+}
+.hljs-meta .hljs-string,
+.hljs-string {
+  color: var(--color-prettylights-syntax-string);
+}
+.hljs-regexp {
+  color: var(--color-prettylights-syntax-string-regexp);
+}
+.hljs-symbol {
+  color: var(--color-prettylights-syntax-constant);
+}
+.hljs-built_in {
+  color: var(--color-prettylights-syntax-entity);
+}
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+  color: var(--color-prettylights-syntax-comment);
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+  color: var(--color-prettylights-syntax-entity-tag);
+}
+.hljs-subst {
+  color: var(--color-prettylights-syntax-markup-changed-text);
+}
+.hljs-section {
+  color: var(--color-prettylights-syntax-markup-bold);
+  font-weight: 700;
+}
+.hljs-bullet {
+  color: var(--color-prettylights-syntax-markup-list);
+}
+.hljs-emphasis {
+  color: var(--color-prettylights-syntax-markup-italic);
+  font-style: italic;
+}
+.hljs-strong {
+  color: var(--color-prettylights-syntax-markup-bold);
+  font-weight: 700;
+}
+.hljs-addition {
+  color: var(--color-prettylights-syntax-markup-inserted-text);
+  background-color: var(--color-prettylights-syntax-markup-inserted-bg);
+}
+.hljs-deletion {
+  color: var(--color-prettylights-syntax-markup-deleted-text);
+  background-color: var(--color-prettylights-syntax-markup-deleted-bg);
+}

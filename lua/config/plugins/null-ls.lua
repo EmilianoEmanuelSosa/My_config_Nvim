@@ -1,23 +1,25 @@
-local ok, null = pcall(require,'null-ls')
+local ok, null = pcall(require, "null-ls")
 
-if not ok then return end
+if not ok then
+	return
+end
 
 local lsp_formatting = function(bufnr)
-vim.lsp.buf.format({
-  filter = function(client)
-    -- Ignore formatting from these LSPs
-    local lsp_formatting_denylist = {
-      eslint = true,
-      lemminx = true,
-      lua_ls = true,
-    }
-    if lsp_formatting_denylist[client.name] then
-      return false
-    end
-    return true
-  end,
-  bufnr = bufnr,
-})
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- Ignore formatting from these LSPs
+			local lsp_formatting_denylist = {
+				eslint = true,
+				lemminx = true,
+				lua_ls = true,
+			}
+			if lsp_formatting_denylist[client.name] then
+				return false
+			end
+			return true
+		end,
+		bufnr = bufnr,
+	})
 end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -37,11 +39,29 @@ null.setup({
 	end,
 	sources = {
 		require("null-ls").builtins.formatting.prettier.with({
-			extra_filetypes = { "xml" },
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"css",
+				"scss",
+				"less",
+				"html",
+				"json",
+				"jsonc",
+				"yaml",
+				"markdown",
+				"markdown.mdx",
+				"graphql",
+				"handlebars",
+			},
 		}),
 		require("null-ls").builtins.formatting.black,
 		require("null-ls").builtins.formatting.djlint,
 		require("null-ls").builtins.formatting.isort,
+		require("null-ls").builtins.formatting.prettierd,
 		require("null-ls").builtins.formatting.stylua,
 		require("null-ls").builtins.diagnostics.djlint,
 		require("null-ls").builtins.diagnostics.flake8,
